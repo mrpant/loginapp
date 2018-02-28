@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <title>Admin Panel</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="/css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="/css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/style-responsive.css" rel="stylesheet" />
+ 
+
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!--header start-->
+     {{#if user}}
+    <header class="header dark-bg">
+ 
+    
+      <!--logo start-->
+      <a href="#" class="logo">ADMIN <span class="lite">PANEL</span></a>
+      <!--logo end-->
+
+      <div class="nav search-row" id="top_menu">
+   
+      </div>
+
+      <div class="top-nav notification-row">
+        <!-- notificatoin dropdown start-->
+        <ul class="nav pull-right top-menu">
+
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="/img/avatar1_small.jpg">
+                            </span>
+                            <span class="username">Jenifer Smith</span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li>
+               <a href="/users/logout"><i class="icon_key_alt"></i> Log Out</a>
+              </li>
+              
+            </ul>
+          </li>
+          <!-- user login dropdown end -->
+        </ul>
+        <!-- notificatoin dropdown end-->
+      </div>
+    </header>
+    {{/if}}
+    <!--header end-->
+
+    <!--sidebar start-->
+     {{#if user}}
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a class="" href="/">
+                          <i class="icon_desktop"></i>
+                          <span>Device</span>
+                      </a>
+          </li>
+          <li class="active">
+            <a class="" href="/product">
+                          <i class="icon_genius"></i>
+                          <span>Product</span>
+                      </a>
+          </li>
+          <li class="active">
+            <a class="" href="/company">
+                          <i class="icon_house_alt"></i>
+                          <span>Company</span>
+                      </a>
+          </li>
+        {{!--   <li class="active">
+            <a class="" href="/file">
+                          <i class="icon_document_alt"></i>
+                          <span>FILES</span>
+                      </a>
+          </li> --}}
+          <li class="active">
+            <a class="" href="/playlist">
+                          <i class="icon_document_alt"></i>
+                          <span>Playlist</span>
+                      </a>
+          </li>
+          <li class="active">
+            <a class="" href="/scheduler">
+                          <i class="icon_piechart"></i>
+                          <span>Scheduling</span>
+                      </a>
+          </li>
+          <li class="active">
+            <a class="" href="/">
+                          <i class="icon_table"></i>
+                          <span>Logs</span>
+                      </a>
+          </li>
+      
+    
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    {{else}}
+    <h2 class="heading">ADMIN PANEL</h2>
+    {{/if}}
+    <!--sidebar end-->
+  
+         {{#if success_msg}}
+            <div class="alert alert-success alert-dismissible" style="    top: 17%;
+    left: 42%;
+    width: 28%;
+    position: absolute;z-index:100000">
+    
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    {{success_msg}}</div>
+          {{/if}}
+
+          {{#if error_msg}}
+            <div class="alert alert-danger alert-dismissible" style="    top: 17%;
+    left: 42%;
+    width: 28%;
+    position: absolute;z-index:100000">
+         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    {{error_msg}}</div>
+          {{/if}}
+
+          {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+          {{/if}}
+    <!--main content start-->
+    {{{body}}}
+    <!--main content end-->
+   {{!--  <div class="text-right">
+      <div class="credits">
+    
+          <a href="https://bootstrapmade.com/">Free Bootstrap Templates</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div> --}}
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+   
+  <script>
+    $(document).ready(function() {
+      $('.tables').DataTable();
+    });
+  </script>
+ 
+  <!-- nice scroll -->
+  <script src="/js/jquery.scrollTo.min.js"></script>
+  <script src="/js/jquery.nicescroll.js" type="text/javascript"></script>
+  <!-- jquery knob -->
+ {{!--  <script src="assets/jquery-knob/js/jquery.knob.js"></script> --}}
+  <!--custome script for all page-->
+  <script src="/js/scripts.js"></script>
+
+  <script>
+   $(document).ready(function(){
+        $('.btn-danger').click(function(){
+            var result = confirm("Do you want to Delete ?");
+            if(result){
+                  return true;
+            }else{
+              return false;
+            }
+        });
+   });
+  </script>
+
+
+</body>
+
+</html>
