@@ -62,6 +62,11 @@ module.exports.fileList= function(callback){
         Files.find(callback);
 }
 
+module.exports.fileListProductWise= function(productId,callback){
+        var selecter = {productId : productId};
+        Files.find(selecter,callback);
+}
+
 module.exports.fileListByDeviceId= function(id){
    
       return  Files.find({deviceId:id},function(err,files){

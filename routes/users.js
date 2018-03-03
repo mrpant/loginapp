@@ -92,6 +92,13 @@ router.post('/login',
     res.redirect('/');
   });
 
+
+	router.get('/login', function(req, res){
+		res.render('login');
+		req.flash('error_msg', "Invalid User Access");
+	});
+
+
 router.get('/logout', function(req, res){
 
 	

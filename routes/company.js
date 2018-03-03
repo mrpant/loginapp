@@ -89,7 +89,7 @@ router.post('/create',ensureAuthenticated, function(req, res){
 	var companyObj = new Company({
 			name : req.body.name,
   			email: req.body.email,
-  			country: req.body.email,
+  			country: req.body.country,
 			location: req.body.location,
 			phone : req.body.phone,
 			website :  req.body.website  
@@ -108,7 +108,7 @@ router.post('/create',ensureAuthenticated, function(req, res){
 		var companyObj = {
 			name : req.body.name,
   			email: req.body.email,
-  			country: req.body.email,
+  			country: req.body.country,
 			location: req.body.location,
 			phone : req.body.phone,
 			website :  req.body.website  

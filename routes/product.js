@@ -35,7 +35,7 @@ var storage = multer.diskStorage({
 
 
 
-var upload = multer({storage: storage}).array('uploadedImages', 5);
+var upload = multer({storage: storage}).array('uploadedImages', 50);
 router.get('/',ensureAuthenticated, function(req, res){
 
 	Product.productList(function(err, product){
@@ -95,11 +95,12 @@ router.post('/device-assign-update/:productId',ensureAuthenticated, function(req
 router.get('/:productId/file-view',ensureAuthenticated, function(req, res){
 
 	filesArray = [];	
-	File.fileList(function(err, file){
+	File.fileListProductWise(req.params.productId,function(err, file){
 	
 		if(err){ throw err;
 		}else{
 			file.forEach((element)=>{
+
 				filesObj = {};
 				filesObj['name'] = element.name;
 				filesObj['fileType'] = element.fileType;
@@ -112,6 +113,7 @@ router.get('/:productId/file-view',ensureAuthenticated, function(req, res){
 				}else{
 					filesObj['isImage'] = false;
 				}
+				
 				filesArray.push(filesObj);
 			});
 		}
